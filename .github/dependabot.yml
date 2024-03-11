@@ -1,0 +1,60 @@
+version: 2
+registries:
+  npm-github:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{secrets.PACKAGES_TOKEN}}
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    registries:
+      - npm-github
+    commit-message:
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
+    ignore:
+      - dependency-name: 'react'
+    open-pull-requests-limit: 100
+
+  - package-ecosystem: 'npm'
+    directory: '/dependencies/microfrontends'
+    schedule:
+      interval: 'daily'
+    registries:
+      - npm-github
+    commit-message:
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
+    ignore:
+      - dependency-name: 'constructs'
+      - dependency-name: 'styled-components'
+      - dependency-name: 'react'
+      - dependency-name: 'react-dom'
+      - dependency-name: '@types/react-dom'
+      - dependency-name: '@types/react'
+      - dependency-name: '@types/styled-components'
+    open-pull-requests-limit: 100
+
+  - package-ecosystem: 'npm'
+    directory: '/dependencies/microservices'
+    schedule:
+      interval: 'daily'
+    registries:
+      - npm-github
+    commit-message:
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
+    ignore:
+      - dependency-name: '@types/typescript'
+    open-pull-requests-limit: 100
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    commit-message:
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
+    open-pull-requests-limit: 100
