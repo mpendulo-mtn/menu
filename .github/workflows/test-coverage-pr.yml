@@ -79,7 +79,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add test coverage report in PR
-        uses: ArtiomTr/jest-coverage-report-action@v2.2.6
+        uses: ArtiomTr/jest-coverage-report-action@v2.3.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
