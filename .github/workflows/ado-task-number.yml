@@ -1,0 +1,13 @@
+name: Validate ADO Task number
+on: [pull_request]
+
+jobs:
+  check_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR
+        uses: JJ/github-pr-contains-action@releases/v14
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          bodyContains: 'AB#'
+          waivedUsers: 'dependabot[bot]'
